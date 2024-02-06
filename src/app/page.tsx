@@ -2,14 +2,15 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import axios from 'axios'
+import { getUrl } from "@/lib/url";
 
 export default function Home() {
 
   const [input,setInput] = useState("")
   
-  const {mutate, data, error} = useMutation({
+  const {mutate, data} = useMutation({
     mutationFn: (input: string) =>{
-      return axios.post('/api/getyt',{input: input})
+      return axios.post(getUrl()+'/api/getyt',{input: input})
     }
   })
 
